@@ -1,20 +1,27 @@
-import { Injectable } from '../src/injectable';
-import { Directive } from '../src/directive';
-import { Component } from '../src/component';
-import { NgModule } from '../src/module';
-import { Input, Output } from '../src/input';
-import { AfterViewInit, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '../src/lifecycle_hooks';
-import { HostListener } from '../src/hostListener';
-import { ViewChild, ViewChildren } from '../src/viewChild';
+import { Injectable } from "../src/injectable";
+import { Directive } from "../src/directive";
+import { Component } from "../src/component";
+import { NgModule } from "../src/module";
+import { Input, Output } from "../src/input";
+import {
+  AfterViewInit,
+  DoCheck,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from "../src/lifecycle_hooks";
+import { HostListener } from "../src/hostListener";
+import { ViewChild } from "../src/viewChild";
 
-export const serviceName = 'TestService';
+export const serviceName = "TestService";
 
 @Injectable(serviceName)
 export class TestService {
-  private someProp = 'This is private property';
+  private someProp = "This is private property";
 
   static someStaticMethod() {
-    return 'This is static method';
+    return "This is static method";
   }
 
   constructor(private $http: any) {}
@@ -26,28 +33,30 @@ export class TestService {
 
 export function directive(selector: string) {
   @Component({
-    selector: 'child'
+    selector: "child",
   })
   class ChildComponent {}
 
   @Directive({
     selector,
-    scope: true
+    scope: true,
   })
   class MyDirective {
     @Input() testInput;
     @Output() testOutput;
     @ViewChild(ChildComponent) child;
 
-    constructor(private $log: ng.ILogService,
-                private $parse: ng.IParseService) { }
+    constructor(
+      private $log: ng.ILogService,
+      private $parse: ng.IParseService
+    ) {}
     $onInit() {
       console.log(this.$log, this.$parse);
     }
 
-    @HostListener('click')
+    @HostListener("click")
     onClick() {
-      console.log('click');
+      console.log("click");
     }
   }
   return MyDirective;
@@ -55,20 +64,24 @@ export function directive(selector: string) {
 
 export function component(selector: string) {
   @Component({
-    selector: 'child'
+    selector: "child",
   })
   class ChildComponent {}
 
   @Component({
-    selector
+    selector,
   })
-  class MyComponent implements OnInit, OnChanges, DoCheck, OnDestroy, AfterViewInit {
+  class MyComponent
+    implements OnInit, OnChanges, DoCheck, OnDestroy, AfterViewInit
+  {
     @Input() testInput;
     @Output() testOutput;
     @ViewChild(ChildComponent) child;
 
-    constructor(private $log: ng.ILogService,
-                private $parse: ng.IParseService) { }
+    constructor(
+      private $log: ng.ILogService,
+      private $parse: ng.IParseService
+    ) {}
     ngOnInit() {
       console.log(this.$log, this.$parse);
     }
@@ -85,19 +98,20 @@ export function component(selector: string) {
 
     ngAfterViewInit() {}
 
-    @HostListener('click')
+    @HostListener("click")
     onClick() {
-      console.log('click');
+      console.log("click");
     }
   }
   return MyComponent;
 }
 
-export const registerNgModule = (name: string = '',
-                                 imports: any[] = [],
-                                 declarations: any[] = [],
-                                 providers: any[] = []): any => {
-
+export const registerNgModule = (
+  name = "",
+  imports: any[] = [],
+  declarations: any[] = [],
+  providers: any[] = []
+): any => {
   @NgModule({
     id: name,
     imports,
@@ -105,7 +119,6 @@ export const registerNgModule = (name: string = '',
     providers,
   })
   class TestModule {
-
     static config($httpProvider: ng.IHttpProvider) {}
 
     static run($rootScope: ng.IRootScopeService) {}

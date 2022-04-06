@@ -9,7 +9,8 @@
     "stripInternal": true,
     "outDir": "dist/temp",
     "importHelpers": true,
-    "lib": ["dom", "es2015"]
+    "lib": ["dom", "es2015"],
+    "resolveJsonModule": true
   },
   "files": [
     "src/index.ts"
