@@ -21,14 +21,14 @@ export default [
                 plugins: [terser()],
             },
             {
-                file: pkg.module,
+                file: `dist/${pkg.module}`,
                 format: 'esm',
                 globals: ['angular', 'tslib'],
                 exports: 'named',
                 sourcemap: true,
             },
             {
-                file: pkg.main,
+                file: `dist/${pkg.main}`,
                 format: 'cjs',
                 globals: ['angular', 'tslib'],
                 sourcemap: true,

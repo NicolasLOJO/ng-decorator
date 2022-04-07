@@ -1,18 +1,15 @@
-# angular-ts-decorators
+# ng-decorator
 
 A collection of angular 2 style decorators for angularjs 1.5.x projects written in typescript.
 
-[![Build Status](https://travis-ci.org/vsternbach/angular-ts-decorators.svg?branch=master)](https://travis-ci.org/vsternbach/angular-ts-decorators)
-[![Coverage Status](https://coveralls.io/repos/github/vsternbach/angular-ts-decorators/badge.svg?branch=master)](https://coveralls.io/github/vsternbach/angular-ts-decorators?branch=master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/vsternbach/angular-ts-decorators.svg)](https://greenkeeper.io/)
-
-[![NPM](https://nodei.co/npm/angular-ts-decorators.png?downloads=true)](https://nodei.co/npm/angular-ts-decorators/)
-
 See example of usage [here](https://github.com/vsternbach/angularjs-typescript-webpack)
+
+## Caution
+This is a fork of original project that is [angular-ts-decorators](https://github.com/vsternbach/angular-ts-decorators)
 
 ## Prerequisites
 
-`angular-ts-decorators` tries to mimic [angular 2 style](https://angular.io/docs/ts/latest/guide/style-guide.html) decorators as closely as possible.
+`@nicolaslojo/ng-decorator` tries to mimic [angular 2 style](https://angular.io/docs/ts/latest/guide/style-guide.html) decorators as closely as possible.
 
 Some of the decorator interfaces (@Component and @Directive) were heavily inspired by this excellent [Angular 1.x styleguide (ES2015)](https://github.com/toddmotto/angular-styleguide).
 
@@ -20,7 +17,7 @@ Some of the decorator interfaces (@Component and @Directive) were heavily inspir
 
 ## Installation
 
-`npm i -S angular-ts-decorators`
+`npm i -S @nicolaslojo/ng-decorator`
 
 Dependencies: `tslib` and `reflect-metadata`
 Peer dependencies: `"angular": ">=1.5.0"`
@@ -97,11 +94,11 @@ export const TodoFormModule = angular
     .component('todoForm', TodoFormComponent).name;
 ```
 
-Using `angular-ts-decorators` decorators in typescript the component code will look like this
+Using `@nicolaslojo/ng-decorator` decorators in typescript the component code will look like this
 
 ```js
 /* ----- todo/todo-form/todo-form.component.ts ----- */
-import { Component, Input, Output } from 'angular-ts-decorators';
+import { Component, Input, Output } from '@nicolaslojo/ng-decorator';
 
 const templateUrl = require('./todo-form.html');
 
@@ -138,7 +135,7 @@ And we'll register it with angular like so:
 
 ```js
 /* ----- todo/todo-form/todo-form.module.ts ----- */
-import { NgModule } from 'angular-ts-decorators';
+import { NgModule } from '@nicolaslojo/ng-decorator';
 import { TodoFormComponent } from './todo-form.component';
 
 @NgModule({
@@ -161,7 +158,7 @@ Here's an example of service using @Injectable decorator
 
 ```js
 /* ----- greeting/greeting.service.ts ----- */
-import { Injectable } from 'angular-ts-decorators';
+import { Injectable } from '@nicolaslojo/ng-decorator';
 
 @Injectable()
 export class GreetingService {
@@ -180,7 +177,7 @@ This is how angular filter looks like using angular 2 style @Pipe decorator:
 
 ```js
 /* ----- greeting/uppercase.filter.ts ----- */
-import { Pipe, PipeTransform } from 'angular-ts-decorators';
+import { Pipe, PipeTransform } from '@nicolaslojo/ng-decorator';
 
 @Pipe({name: 'uppercase'})
 export class UppercasePipe implements PipeTransform {
@@ -195,7 +192,7 @@ export class UppercasePipe implements PipeTransform {
 And here's an example of provider registration with @NgModule decorator, its configuration in config method of module class and it's usage in run method:
 
 ```js
-import { NgModule } from 'angular-ts-decorators';
+import { NgModule } from '@nicolaslojo/ng-decorator';
 import { TodoFormModule } from 'todo/todo-form/todo-form.module';
 import { GreetingService } from 'greeting/greeting.service';
 import { UppercasePipe } from 'greeting/uppercase.filter';
@@ -239,7 +236,7 @@ export class AppModule {
 Usage:
 
 ```js
-import { HostListener } from 'angular-ts-decorators';
+import { HostListener } from '@nicolaslojo/ng-decorator';
 
 export class MyDirective {
     @HostListener('click mouseover')
@@ -308,7 +305,7 @@ angular.element(document).ready(() => {
 });
 ```
 
-With `angular-ts-decorators` you can bootstrap your application using angular syntax
+With `@nicolaslojo/ng-decorator` you can bootstrap your application using angular syntax
 
 If your main module is a class decorated with NgModule metadata, you can bootstrap it like so:
 

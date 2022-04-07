@@ -1,6 +1,6 @@
 {
     "name": "@nicolaslojo/ng-decorator",
-    "version": "3.7.10",
+    "version": "3.7.11",
     "license": "MIT",
     "author": {
         "name": "NicolasLOJO",
@@ -25,13 +25,10 @@
         "angularjs decorators",
         "angularjs-decorators"
     ],
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
-    "browser": "dist/ng-decorator.min.js",
+    "main": "cjs/index.js",
+    "module": "esm/index.js",
+    "browser": "ng-decorator.min.js",
     "types": "types/index.d.ts",
-    "files": [
-        "dist"
-    ],
     "dependencies": {
         "reflect-metadata": "0.1.13",
         "tslib": "2.3.1"
@@ -73,7 +70,7 @@
         "test": "karma start --single-run",
         "test:dev": "karma start",
         "posttest": "cat ./coverage/lcov.info | coveralls",
-        "build": "npm run clean && rollup -c",
+        "build": "npm run clean && rollup -c && copyfiles package.json README.md CHANGELOG.md LICENSE dist/",
         "release": "standard-version",
         "postrelease": "git push origin master --follow-tags"
     }
