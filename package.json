@@ -1,6 +1,6 @@
 {
     "name": "@nicolaslojo/ng-decorator",
-    "version": "3.7.9",
+    "version": "3.7.10",
     "license": "MIT",
     "author": {
         "name": "NicolasLOJO",
@@ -29,7 +29,9 @@
     "module": "dist/esm/index.js",
     "browser": "dist/ng-decorator.min.js",
     "types": "types/index.d.ts",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "dependencies": {
         "reflect-metadata": "0.1.13",
         "tslib": "2.3.1"
