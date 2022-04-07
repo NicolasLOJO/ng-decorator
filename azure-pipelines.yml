@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- release/*
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+- script: |
+    export CHROME_BIN=/usr/bin/google-chrome
+    export DISPLAY=:99.0
+    sh -e /etc/init.d/xvfb start
+    sudo apt-get update
+    sudo apt-get install -y libappindicator1 fonts-liberation
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome*.deb
+- task: Npm@1
+  inputs:
+    command: 'install'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'test'
+
+- script: |
+    npm run build
+  displayName: Build
+
+- script: |
+    npm pack
+  displayName: Packaging
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '*.tgz'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'package'
+    publishLocation: 'Container'
