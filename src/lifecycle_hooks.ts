@@ -2,12 +2,12 @@
  * @internal
  * @desc Mapping between angular and angularjs LifecycleHooks
  */
-export const ngLifecycleHooksMap: object = {
-  ngOnInit: '$onInit',
-  ngOnDestroy: '$onDestroy',
-  ngDoCheck: '$doCheck',
-  ngOnChanges: '$onChanges',
-  ngAfterViewInit: '$postLink'
+export const ngLifecycleHooksMap: { [key: string]: string } = {
+    ngOnInit: '$onInit',
+    ngOnDestroy: '$onDestroy',
+    ngDoCheck: '$doCheck',
+    ngOnChanges: '$onChanges',
+    ngAfterViewInit: '$postLink',
 };
 
 /**
@@ -15,9 +15,9 @@ export const ngLifecycleHooksMap: object = {
  * @stable
  */
 export interface SimpleChange<T = any> {
-  previousValue: T;
-  currentValue: T;
-  isFirstChange(): boolean;
+    previousValue: T;
+    currentValue: T;
+    isFirstChange(): boolean;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface SimpleChange<T = any> {
  * @stable
  */
 export type SimpleChanges<C = any> = {
-  [P in keyof C]: SimpleChange<C[P]>;
+    [P in keyof C]: SimpleChange<C[P]>;
 };
 
 /**
@@ -44,7 +44,9 @@ export type SimpleChanges<C = any> = {
  *
  * @stable
  */
-export interface OnChanges { ngOnChanges(changes: SimpleChanges): void; }
+export interface OnChanges {
+    ngOnChanges(changes: SimpleChanges): void;
+}
 
 /**
  * @whatItDoes Lifecycle hook that is called after data-bound properties of a directive are
@@ -61,7 +63,9 @@ export interface OnChanges { ngOnChanges(changes: SimpleChanges): void; }
  *
  * @stable
  */
-export interface OnInit { ngOnInit(): void; }
+export interface OnInit {
+    ngOnInit(): void;
+}
 
 /**
  * @whatItDoes Lifecycle hook that is called when Angular dirty checks a directive.
@@ -84,7 +88,9 @@ export interface OnInit { ngOnInit(): void; }
  *
  * @stable
  */
-export interface DoCheck { ngDoCheck(): void; }
+export interface DoCheck {
+    ngDoCheck(): void;
+}
 
 /**
  * @whatItDoes Lifecycle hook that is called when a directive, pipe or service is destroyed.
@@ -99,7 +105,9 @@ export interface DoCheck { ngDoCheck(): void; }
  *
  * @stable
  */
-export interface OnDestroy { ngOnDestroy(): void; }
+export interface OnDestroy {
+    ngOnDestroy(): void;
+}
 
 /**
  * @whatItDoes Lifecycle hook that is called after a component's view has been fully
@@ -112,4 +120,6 @@ export interface OnDestroy { ngOnDestroy(): void; }
  *
  * @stable
  */
-export interface AfterViewInit { ngAfterViewInit(): void; }
+export interface AfterViewInit {
+    ngAfterViewInit(): void;
+}

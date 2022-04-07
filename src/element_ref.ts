@@ -11,15 +11,15 @@
  * @stable
  */
 export class ElementRef {
+    public nativeElement: HTMLElement | undefined;
 
-  public nativeElement: HTMLElement;
-
-  constructor($element: JQuery) {
-    $element['nativeElement'] = $element[0];
-    return $element as ElementRef;
-  }
+    constructor($element: JQuery) {
+        //@ts-ignore
+        $element['nativeElement'] = $element[0];
+        return $element as ElementRef;
+    }
 }
 
 export interface ElementRef extends JQuery {
-  nativeElement: HTMLElement;
+    nativeElement: HTMLElement | undefined;
 }

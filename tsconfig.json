@@ -1,21 +1,13 @@
 {
-  "extends": "./tsconfig-base",
-  "compilerOptions": {
-    "module": "es2015",
-    "target": "es5",
-    "moduleResolution": "node",
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "stripInternal": true,
-    "outDir": "dist/temp",
-    "importHelpers": true,
-    "lib": ["dom", "es2015"],
-    "resolveJsonModule": true
-  },
-  "files": [
-    "src/index.ts"
-  ],
-  "exclude": [
-    "dist"
-  ]
+    "extends": "./tsconfig-base",
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "es5",
+        "declaration": true,
+        "declarationDir": "types",
+        "strict": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+    },
+    "include": ["src/**.ts"]
 }
